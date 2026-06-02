@@ -1,0 +1,158 @@
+/* Global styles for Skill Exchange */
+:root {
+    --primary: #667eea;
+    --secondary: #764ba2;
+    --background: #f8f9fa;
+    --surface: #ffffff;
+    --text: #333333;
+    --muted: #6c757d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.site-header .navbar {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+.site-header .nav-link,
+.site-header .navbar-brand {
+    color: #ffffff !important;
+}
+
+.hero-section {
+    padding: 140px 0 80px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
+                url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=60') no-repeat center / cover;
+    color: #ffffff;
+}
+
+.hero-section h1 {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1.05;
+    margin-bottom: 1rem;
+}
+
+.hero-section p.lead {
+    font-size: 1.125rem;
+    margin-bottom: 1.75rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons .btn {
+    margin-right: 0.75rem;
+}
+
+.hero-buttons .btn:last-child {
+    margin-right: 0;
+}
+
+.section-spacing {
+    padding: 80px 0;
+}
+
+.feature-row h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+    color: var(--muted);
+}
+
+.feature-list li i {
+    color: var(--primary);
+}
+
+.stat-card {
+    background: var(--surface);
+    border-radius: 1rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    min-height: 250px;
+}
+
+.stat-card i {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.hero-image {
+    max-width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+}
+
+.site-footer {
+    background: #212529;
+    color: #f8f9fa;
+}
+
+.site-footer a {
+    color: #ffffff;
+}
+
+.section-card,
+.form-container,
+.dashboard-section,
+.search-section,
+.skill-card {
+    background: var(--surface);
+}
+
+.btn-primary {
+    background: var(--primary);
+    border: none;
+}
+
+.btn-primary:hover,
+.btn-outline-light:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 100px 0 60px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        margin-bottom: 0.75rem;
+    }
+
+    .hero-buttons .btn:last-child {
+        margin-bottom: 0;
+    }
+}
