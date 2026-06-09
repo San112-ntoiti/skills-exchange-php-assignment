@@ -1,8 +1,4 @@
 <?php
-/**
- * User Login Page
- * Member 2: Login System - User Login
- */
 
 require_once 'includes/db.php';
 require_once 'includes/auth.php';
@@ -42,73 +38,21 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Skill Exchange</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .login-container {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-        }
-        .login-container h2 {
-            margin-bottom: 30px;
-            color: #333;
-            text-align: center;
-            font-weight: bold;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-control {
-            border: 1px solid #ddd;
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-        .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
-        }
-        .btn-login {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            width: 100%;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        .register-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .register-link a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .alert {
-            margin-bottom: 20px;
-        }
-    </style>
+    <title>Login - Learning Hub</title>
+    <meta name="description" content="Login to Learning Hub and continue your premium learning journey." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/site.js"></script>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Skill Exchange</h2>
+    <div class="page-shell">
+        <?php include 'includes/header.php'; ?>
+        <main class="auth-page">
+            <section class="auth-card reveal">
+                <h2 class="auth-title">Skill Exchange</h2>
         
         <?php if (!empty($message)): ?>
             <div class="alert alert-<?php echo $message_type == 'success' ? 'success' : 'danger'; ?>" role="alert">
@@ -127,14 +71,16 @@ $conn->close();
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             
-            <button type="submit" class="btn-login">Login</button>
+            <button type="submit" class="btn btn-primary">Login</button>
         </form>
         
         <div class="register-link">
             <p>Don't have an account? <a href="register.php">Create one</a></p>
         </div>
+            </section>
+            <?php include 'includes/footer.php'; ?>
+        </main>
     </div>
-    
     <script src="js/validation.js"></script>
 </body>
 </html>

@@ -66,58 +66,26 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Skill - Skill Exchange</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Add Skill - Learning Hub</title>
+    <meta name="description" content="Add a new skill offering to your Learning Hub profile." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/site.js"></script>
     <style>
-        :root {
-            --primary-color: #667eea;
-            --secondary-color: #764ba2;
+        @media (max-width: 768px) {
+            .auth-page {
+                padding: 2rem 0;
+            }
         }
-        
-        body {
-            background-color: #f8f9fa;
-        }
-        
-        .navbar {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .navbar-brand {
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-        
-        .nav-link {
-            color: rgba(255, 255, 255, 0.9) !important;
-            margin-left: 15px;
-        }
-        
-        .form-container {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-            max-width: 600px;
-            margin: 30px auto;
-        }
-        
-        .form-title {
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--primary-color);
-        }
-        
-        .form-group label {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-        }
-        
-        .form-control, .form-select {
+    </style>
+</head>
+<body>
+    <div class="page-shell">
+        <?php include 'includes/header.php'; ?>
+        <main class="request-wrapper reveal">
             border: 1px solid #ddd;
             padding: 10px 15px;
             border-radius: 5px;
@@ -179,95 +147,75 @@ $conn->close();
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="dashboard.php">
-                <i class="fas fa-handshake"></i> Skill Exchange
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="page-shell">
+        <?php include 'includes/header.php'; ?>
+        <main class="request-wrapper reveal">
+            <section class="auth-card">
+                <h2 class="auth-title"><i class="fas fa-plus"></i> Add New Skill</h2>
 
-    <div class="form-container">
-        <h2 class="form-title">
-            <i class="fas fa-plus"></i> Add New Skill
-        </h2>
+                <?php if (!empty($message)): ?>
+                    <div class="alert alert-<?php echo $message_type == 'success' ? 'success' : 'danger'; ?>" role="alert">
+                        <?php echo $message; ?>
+                    </div>
+                <?php endif; ?>
 
-        <?php if (!empty($message)): ?>
-            <div class="alert alert-<?php echo $message_type == 'success' ? 'success' : 'danger'; ?>" role="alert">
-                <?php echo $message; ?>
-            </div>
-        <?php endif; ?>
+                <form method="POST" id="addSkillForm">
+                    <div class="form-group">
+                        <label for="title">Skill Title</label>
+                        <input type="text" class="form-control" id="title" name="title" 
+                               value="<?php echo isset($title) ? htmlspecialchars($title) : ''; ?>" required>
+                        <small class="form-text">Minimum 3 characters</small>
+                    </div>
 
-        <form method="POST" id="addSkillForm">
-            <div class="form-group mb-3">
-                <label for="title">Skill Title</label>
-                <input type="text" class="form-control" id="title" name="title" 
-                       value="<?php echo isset($title) ? htmlspecialchars($title) : ''; ?>" required>
-                <small class="form-text">Minimum 3 characters</small>
-            </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select class="form-select" id="category" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="Technology" <?php echo isset($category) && $category == 'Technology' ? 'selected' : ''; ?>>Technology</option>
+                            <option value="Business" <?php echo isset($category) && $category == 'Business' ? 'selected' : ''; ?>>Business</option>
+                            <option value="Design" <?php echo isset($category) && $category == 'Design' ? 'selected' : ''; ?>>Design</option>
+                            <option value="Marketing" <?php echo isset($category) && $category == 'Marketing' ? 'selected' : ''; ?>>Marketing</option>
+                            <option value="Languages" <?php echo isset($category) && $category == 'Languages' ? 'selected' : ''; ?>>Languages</option>
+                            <option value="Personal" <?php echo isset($category) && $category == 'Personal' ? 'selected' : ''; ?>>Personal</option>
+                            <option value="Other" <?php echo isset($category) && $category == 'Other' ? 'selected' : ''; ?>>Other</option>
+                        </select>
+                    </div>
 
-            <div class="form-group mb-3">
-                <label for="category">Category</label>
-                <select class="form-select" id="category" name="category" required>
-                    <option value="">Select a category</option>
-                    <option value="Technology" <?php echo isset($category) && $category == 'Technology' ? 'selected' : ''; ?>>Technology</option>
-                    <option value="Business" <?php echo isset($category) && $category == 'Business' ? 'selected' : ''; ?>>Business</option>
-                    <option value="Design" <?php echo isset($category) && $category == 'Design' ? 'selected' : ''; ?>>Design</option>
-                    <option value="Marketing" <?php echo isset($category) && $category == 'Marketing' ? 'selected' : ''; ?>>Marketing</option>
-                    <option value="Languages" <?php echo isset($category) && $category == 'Languages' ? 'selected' : ''; ?>>Languages</option>
-                    <option value="Personal" <?php echo isset($category) && $category == 'Personal' ? 'selected' : ''; ?>>Personal</option>
-                    <option value="Other" <?php echo isset($category) && $category == 'Other' ? 'selected' : ''; ?>>Other</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="5" required><?php echo isset($description) ? htmlspecialchars($description) : ''; ?></textarea>
+                        <small class="form-text">Minimum 10 characters. Describe your skill in detail.</small>
+                    </div>
 
-            <div class="form-group mb-3">
-                <label for="description">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="5" required><?php echo isset($description) ? htmlspecialchars($description) : ''; ?></textarea>
-                <small class="form-text">Minimum 10 characters. Describe your skill in detail.</small>
-            </div>
+                    <div class="form-group">
+                        <label for="skill_level">Skill Level</label>
+                        <select class="form-select" id="skill_level" name="skill_level" required>
+                            <option value="beginner" <?php echo isset($skill_level) && $skill_level == 'beginner' ? 'selected' : ''; ?>>Beginner</option>
+                            <option value="intermediate" <?php echo isset($skill_level) && $skill_level == 'intermediate' ? 'selected' : ''; ?>>Intermediate</option>
+                            <option value="advanced" <?php echo isset($skill_level) && $skill_level == 'advanced' ? 'selected' : ''; ?>>Advanced</option>
+                        </select>
+                    </div>
 
-            <div class="form-group mb-3">
-                <label for="skill_level">Skill Level</label>
-                <select class="form-select" id="skill_level" name="skill_level" required>
-                    <option value="beginner" <?php echo isset($skill_level) && $skill_level == 'beginner' ? 'selected' : ''; ?>>Beginner</option>
-                    <option value="intermediate" <?php echo isset($skill_level) && $skill_level == 'intermediate' ? 'selected' : ''; ?>>Intermediate</option>
-                    <option value="advanced" <?php echo isset($skill_level) && $skill_level == 'advanced' ? 'selected' : ''; ?>>Advanced</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="keywords">Keywords (Optional)</label>
+                        <input type="text" class="form-control" id="keywords" name="keywords" 
+                               value="<?php echo isset($keywords) ? htmlspecialchars($keywords) : ''; ?>" 
+                               placeholder="e.g., PHP, MySQL, Web Development">
+                        <small class="form-text">Comma-separated keywords to help others find your skill</small>
+                    </div>
 
-            <div class="form-group mb-3">
-                <label for="keywords">Keywords (Optional)</label>
-                <input type="text" class="form-control" id="keywords" name="keywords" 
-                       value="<?php echo isset($keywords) ? htmlspecialchars($keywords) : ''; ?>" 
-                       placeholder="e.g., PHP, MySQL, Web Development">
-                <small class="form-text">Comma-separated keywords to help others find your skill</small>
-            </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <i class="fas fa-check"></i> Add Skill
+                    </button>
+                </form>
 
-            <button type="submit" class="btn-submit">
-                <i class="fas fa-check"></i> Add Skill
-            </button>
-        </form>
-
-        <a href="dashboard.php" class="btn-back">
-            <i class="fas fa-arrow-left"></i> Back to Dashboard
-        </a>
+                <a href="dashboard.php" class="btn btn-outline btn-back">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+            </section>
+            <?php include 'includes/footer.php'; ?>
+        </main>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/validation.js"></script>
 </body>
 </html>

@@ -1,11 +1,4 @@
 <?php
-/**
- * Authentication Helper Functions
- * Member 2: Login System & Sessions
- * 
- * This file contains all authentication-related functions
- */
-
 session_start();
 
 // Function to register a new user

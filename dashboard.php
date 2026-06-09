@@ -38,106 +38,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['search'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Skill Exchange</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Dashboard - Learning Hub</title>
+    <meta name="description" content="Your Learning Hub dashboard for managing skills, requests, and search." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        :root {
-            --primary-color: #667eea;
-            --secondary-color: #764ba2;
-        }
-        
-        body {
-            background-color: #f8f9fa;
-        }
-        
-        .navbar {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .navbar-brand {
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-        
-        .nav-link {
-            color: rgba(255, 255, 255, 0.9) !important;
-            margin-left: 15px;
-            transition: 0.3s;
-        }
-        
-        .nav-link:hover {
-            color: white !important;
-            transform: translateY(-2px);
-        }
-        
-        .main-container {
-            padding: 30px 0;
-        }
-        
-        .dashboard-section {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-        }
-        
-        .section-title {
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--primary-color);
-        }
-        
-        .btn-add-skill {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        
-        .btn-add-skill:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            color: white;
-            text-decoration: none;
-        }
-        
-        .skill-card {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 5px solid var(--primary-color);
-            transition: 0.3s;
-        }
-        
-        .skill-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .skill-title {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .skill-meta {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        
-        .skill-level {
+    <script defer src="js/site.js"></script>
+</head>
+<body>
+    <div class="page-shell">
+        <?php include 'includes/header.php'; ?>
+        <main class="dashboard-wrapper reveal">
+            <div class="main-container">
+
             display: inline-block;
             padding: 5px 10px;
             border-radius: 20px;
@@ -403,7 +318,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['search'])) {
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <?php include 'includes/footer.php'; ?>
+        </main>
+    </div>
     <script src="js/validation.js"></script>
 </body>
 </html>

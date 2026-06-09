@@ -1,8 +1,4 @@
 <?php
-/**
- * Search endpoint for AJAX search
- * Member 3: AJAX bonus and search functionality
- */
 
 require_once 'includes/db.php';
 require_once 'includes/auth.php';
