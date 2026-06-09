@@ -152,18 +152,20 @@ button {
 
 .hero-section {
     position: relative;
-    min-height: 80vh;
-    overflow: hidden;
+    background: var(--primary);
 }
 
 .hero-slider {
     position: relative;
-    min-height: 100%;
+    width: 100%;
+    min-height: 100vh;
 }
 
 .hero-slide {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
     opacity: 0;
     transition: opacity 0.8s ease;
     display: flex;
