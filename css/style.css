@@ -233,6 +233,14 @@ button {
     color: rgba(255, 255, 255, 0.9);
 }
 
+/* Ensure hero text remains legible on light/dark backgrounds */
+.hero-copy h1,
+.hero-copy p,
+.hero-copy .eyebrow {
+    color: var(--light) !important;
+    text-shadow: 0 10px 30px rgba(2,6,23,0.6), 0 2px 8px rgba(2,6,23,0.35);
+}
+
 .hero-actions {
     display: flex;
     gap: 1rem;
