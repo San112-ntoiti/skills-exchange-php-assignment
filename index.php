@@ -220,7 +220,7 @@ function renderCourseCarousel($anchor, $title, $courses) {
                             <div class="hero-image" aria-hidden="true">
                                 <img src="<?php echo htmlspecialchars($slide['image']); ?>" alt="" onerror="this.onerror=null;this.src='assets/placeholder.svg';">
                             </div>
-                            <div class="container hero-content">
+                            <div class="hero-content">
                                 <div class="hero-copy">
                                     <span class="eyebrow">Premium Learning</span>
                                     <h1><?php echo htmlspecialchars($slide['title']); ?></h1>
