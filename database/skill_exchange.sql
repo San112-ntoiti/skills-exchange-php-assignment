@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS skills (
     category VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
     skill_level ENUM('beginner', 'intermediate', 'advanced') NOT NULL DEFAULT 'beginner',
+    skill_type ENUM('teach','learn') NOT NULL DEFAULT 'teach',
     keywords VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -56,8 +57,8 @@ INSERT INTO users (username, email, password, bio) VALUES
 ('john_doe', 'john@example.com', '$2y$10$8V6DXfDWXj.8bV.qxIf1OOYwxX9Z1J8Z6Y6Y6Y6Y6Y6Y6Y', 'Web developer and designer'),
 ('jane_smith', 'jane@example.com', '$2y$10$8V6DXfDWXj.8bV.qxIf1OOYwxX9Z1J8Z6Y6Y6Y6Y6Y6Y6Y', 'Digital marketer and content creator');
 
-INSERT INTO skills (user_id, title, category, description, skill_level, keywords) VALUES 
-(1, 'Web Development', 'Technology', 'Proficient in PHP, JavaScript, and MySQL databases', 'advanced', 'PHP,JavaScript,MySQL'),
-(1, 'UI/UX Design', 'Design', 'Creative design skills with attention to user experience', 'intermediate', 'Design,UI,UX'),
-(2, 'Content Writing', 'Marketing', 'Professional content writing for blogs and social media', 'advanced', 'Writing,Content,Marketing'),
-(2, 'Social Media Management', 'Marketing', 'Experienced in managing multiple social media platforms', 'intermediate', 'Social,Media,Marketing');
+INSERT INTO skills (user_id, title, category, description, skill_level, skill_type, keywords) VALUES 
+(1, 'Web Development', 'Technology', 'Proficient in PHP, JavaScript, and MySQL databases', 'advanced', 'teach', 'PHP,JavaScript,MySQL'),
+(1, 'UI/UX Design', 'Design', 'Creative design skills with attention to user experience', 'intermediate', 'teach', 'Design,UI,UX'),
+(2, 'Content Writing', 'Marketing', 'Professional content writing for blogs and social media', 'advanced', 'teach', 'Writing,Content,Marketing'),
+(2, 'Social Media Management', 'Marketing', 'Experienced in managing multiple social media platforms', 'intermediate', 'teach', 'Social,Media,Marketing');
