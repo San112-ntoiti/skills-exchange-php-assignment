@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $description = isset($_POST['description']) ? $_POST['description'] : '';
     $skill_level = isset($_POST['skill_level']) ? $_POST['skill_level'] : '';
     $keywords = isset($_POST['keywords']) ? $_POST['keywords'] : '';
+    $skill_type = isset($_POST['skill_type']) ? $_POST['skill_type'] : 'teach';
     
     // Validate input
     $errors = validate_skill_input($title, $category, $description, $skill_level);
@@ -31,10 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $description = sanitize_input($description, $conn);
         $skill_level = sanitize_input($skill_level, $conn);
         $keywords = sanitize_input($keywords, $conn);
+        $skill_type = ($skill_type === 'learn') ? 'learn' : 'teach';
         
-        // Insert skill into database
-        $insert_query = "INSERT INTO skills (user_id, title, category, description, skill_level, keywords, created_at) 
-                         VALUES ($user_id, '$title', '$category', '$description', '$skill_level', '$keywords', NOW())";
+        // Ensure the skills table has the skill_type column (migrate if needed)
+        $conn->query("ALTER TABLE skills ADD COLUMN IF NOT EXISTS skill_type ENUM('teach','learn') NOT NULL DEFAULT 'teach'");
+        
+        // Insert skill into database (including skill_type)
+        $insert_query = "INSERT INTO skills (user_id, title, category, description, skill_level, keywords, skill_type, created_at) 
+                         VALUES ($user_id, '$title', '$category', '$description', '$skill_level', '$keywords', '$skill_type', NOW())";
         
         if ($conn->query($insert_query) === TRUE) {
             $message = 'Skill added successfully!';
@@ -46,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $description = '';
             $skill_level = 'beginner';
             $keywords = '';
+            $skill_type = 'teach';
         } else {
             $message = 'Error adding skill: ' . $conn->error;
             $message_type = 'error';

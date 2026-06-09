@@ -918,6 +918,65 @@ input[type='text']:focus {
         grid-template-columns: 1fr;
     }
 
+    /* Skill card and small buttons */
+    .skill-card {
+        background: var(--light);
+        border-radius: 14px;
+        padding: 16px;
+        box-shadow: 0 8px 30px rgba(15,23,42,0.06);
+        display: block;
+        overflow: hidden;
+    }
+
+    .skill-title {
+        font-weight: 700;
+        margin-bottom: 8px;
+        font-size: 1.05rem;
+    }
+
+    .skill-meta {
+        color: rgba(51,65,85,0.8);
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+    }
+
+    .skill-level {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .skill-level.beginner { background-color: #d4edda; color: #155724; }
+    .skill-level.intermediate { background-color: #fff3cd; color: #856404; }
+    .skill-level.advanced { background-color: #cfe2ff; color: #084298; }
+
+    .skill-role {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 18px;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+
+    .skill-role.learn { background: #fff4e5; color: #7a4a1a; }
+    .skill-role.teach { background: #e6f4ff; color: #093663; }
+
+    .skill-actions { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .btn-small { padding: 6px 12px; font-size: 0.9rem; border: none; border-radius: 6px; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap:8px; }
+    .btn-edit { background-color: #ffc107; color: #333; }
+    .btn-edit:hover { background-color: #e0a800; }
+    .btn-delete { background-color: #dc3545; color: white; }
+    .btn-delete:hover { background-color: #c82333; }
+    .btn-request { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+    .btn-request:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); }
+
+    .btn-add-skill { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 8px 14px; border-radius: 10px; font-weight:600; }
+}
+
     .testimonial-track {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }

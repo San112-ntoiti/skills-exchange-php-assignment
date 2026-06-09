@@ -84,12 +84,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['search'])) {
                                                 <span class="skill-level <?php echo strtolower($skill['skill_level']); ?>">
                                                     <?php echo ucfirst($skill['skill_level']); ?>
                                                 </span>
+                                                <?php $stype = isset($skill['skill_type']) ? $skill['skill_type'] : 'teach'; ?>
+                                                <span class="skill-role <?php echo $stype; ?>" style="margin-left:10px; display:inline-block; padding:6px 10px; border-radius:18px; font-weight:600; font-size:0.85rem;">
+                                                    <?php echo ($stype == 'learn') ? 'Wants to Learn' : 'Can Teach'; ?>
+                                                </span>
                                             </div>
                                             <p class="mt-2"><?php echo htmlspecialchars(substr($skill['description'], 0, 100)); ?>...</p>
-                                            <?php if ($skill['user_id'] != $user_id): ?>
+                                            <?php if ($skill['user_id'] != $user_id && ( !isset($skill['skill_type']) || $skill['skill_type'] == 'teach')): ?>
                                                 <a href="request.php?skill_id=<?php echo $skill['id']; ?>&user_id=<?php echo $skill['user_id']; ?>" 
                                                    class="btn-small btn-request">Request Skill</a>
                                             <?php endif; ?>
+*** End Replace
                                         </div>
                                     </div>
                                 <?php endwhile; ?>
@@ -133,6 +138,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['search'])) {
                                     <span class="skill-level <?php echo strtolower($skill['skill_level']); ?>">
                                         <?php echo ucfirst($skill['skill_level']); ?>
                                     </span>
+                                    <?php $stype = isset($skill['skill_type']) ? $skill['skill_type'] : 'teach'; ?>
+                                    <span class="skill-role <?php echo $stype; ?>" style="margin-left:10px; display:inline-block; padding:6px 10px; border-radius:18px; font-weight:600; font-size:0.85rem;">
+                                        <?php echo ($stype == 'learn') ? 'Wants to Learn' : 'Can Teach'; ?>
+                                    </span>
                                 </div>
                                 <div class="skill-actions">
                                     <a href="edit_skill.php?id=<?php echo $skill['id']; ?>" class="btn-small btn-edit">
@@ -142,6 +151,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['search'])) {
                                        onclick="return confirm('Are you sure you want to delete this skill?');">
                                         <i class="fas fa-trash"></i> Delete
                                     </a>
+                                    <?php if ($skill['user_id'] != $user_id && ( !isset($skill['skill_type']) || $skill['skill_type'] == 'teach')): ?>
+                                        <a href="request.php?skill_id=<?php echo $skill['id']; ?>&user_id=<?php echo $skill['user_id']; ?>" class="btn-small btn-request">Request Skill</a>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         <?php endwhile; ?>
