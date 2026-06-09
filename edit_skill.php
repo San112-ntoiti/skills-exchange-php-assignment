@@ -1,9 +1,4 @@
 <?php
-/**
- * Edit Skill Page
- * Member 2: CRUD Operations - Update
- * Member 3: Validation
- */
 
 require_once 'includes/db.php';
 require_once 'includes/auth.php';
@@ -37,6 +32,7 @@ $category = $skill['category'];
 $description = $skill['description'];
 $skill_level = $skill['skill_level'];
 $keywords = $skill['keywords'];
+$skill_type = isset($skill['skill_type']) ? $skill['skill_type'] : 'teach';
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -45,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $description = isset($_POST['description']) ? $_POST['description'] : '';
     $skill_level = isset($_POST['skill_level']) ? $_POST['skill_level'] : '';
     $keywords = isset($_POST['keywords']) ? $_POST['keywords'] : '';
+    $skill_type = isset($_POST['skill_type']) ? $_POST['skill_type'] : 'teach';
     
     // Validate input (Member 3)
     $errors = validate_skill_input($title, $category, $description, $skill_level);
@@ -56,11 +53,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $description = sanitize_input($description, $conn);
         $skill_level = sanitize_input($skill_level, $conn);
         $keywords = sanitize_input($keywords, $conn);
+        $skill_type = ($skill_type === 'learn') ? 'learn' : 'teach';
+        
+        // Ensure column exists
+        $conn->query("ALTER TABLE skills ADD COLUMN IF NOT EXISTS skill_type ENUM('teach','learn') NOT NULL DEFAULT 'teach'");
         
         // Update skill in database
         $update_query = "UPDATE skills SET title = '$title', category = '$category', 
                         description = '$description', skill_level = '$skill_level', 
-                        keywords = '$keywords', updated_at = NOW() 
+                        keywords = '$keywords', skill_type = '$skill_type', updated_at = NOW() 
                         WHERE id = $skill_id AND user_id = $user_id";
         
         if ($conn->query($update_query) === TRUE) {
@@ -265,6 +266,14 @@ $conn->close();
                     <option value="intermediate" <?php echo $skill_level == 'intermediate' ? 'selected' : ''; ?>>Intermediate</option>
                     <option value="advanced" <?php echo $skill_level == 'advanced' ? 'selected' : ''; ?>>Advanced</option>
                 </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Skill Role</label>
+                <div style="display:flex;gap:12px;align-items:center;margin-top:8px;">
+                    <label style="display:inline-flex;gap:8px;align-items:center;"><input type="radio" name="skill_type" value="teach" <?php echo (!isset($skill_type) || $skill_type == 'teach') ? 'checked' : ''; ?>> I can teach / commit</label>
+                    <label style="display:inline-flex;gap:8px;align-items:center;"><input type="radio" name="skill_type" value="learn" <?php echo (isset($skill_type) && $skill_type == 'learn') ? 'checked' : ''; ?>> I want to learn / ask</label>
+                </div>
             </div>
 
             <div class="form-group mb-3">

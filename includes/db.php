@@ -63,7 +63,11 @@ function search_skills($search_term, $conn) {
     $search_term = sanitize_input($search_term, $conn);
     $query = "SELECT s.*, u.username FROM skills s 
               JOIN users u ON s.user_id = u.id 
-              WHERE s.title LIKE '%$search_term%' OR s.category LIKE '%$search_term%'
+              WHERE s.title LIKE '%$search_term%' 
+                OR s.category LIKE '%$search_term%'
+                OR s.description LIKE '%$search_term%'
+                OR s.keywords LIKE '%$search_term%'
+                OR u.username LIKE '%$search_term%'
               ORDER BY s.created_at DESC";
     return $conn->query($query);
 }
