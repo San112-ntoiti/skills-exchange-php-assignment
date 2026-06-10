@@ -30,9 +30,9 @@ Traditional learning platforms operate on a one-way teaching model with centrali
 ---
 
 ## Member Contributions
-- **Member 1**: Frontend and UI design, homepage layout, shared header/footer, site styling.
-- **Member 2**: Backend application logic, authentication, session handling, CRUD operations, user workflows.
-- **Member 3**: Database design, schema creation, search functionality, AJAX and client-side validation.
+- **Mike**: Frontend and UI design, homepage layout, shared header/footer, site styling.
+- **Newton**: Backend application logic, authentication, session handling, CRUD operations, user workflows.
+- **Hianyu**: Database design, schema creation, search functionality, AJAX and client-side validation.
 
 ---
 
@@ -176,7 +176,7 @@ We adopted a **Model-View-Controller** architecture suitable for a monolithic PH
 ### Directory Organization
 ```
 assign/
-├── index.php (homepage - left for Member 1)
+├── index.php (homepage - left for Mike)
 ├── login.php (authentication entry point)
 ├── register.php (new user account creation)
 ├── dashboard.php (main user interface)
@@ -188,16 +188,16 @@ assign/
 ├── logout.php (session termination)
 │
 ├── /css
-│   └── style.css (Member 1 - main stylesheet)
+│   └── style.css (Mike - main stylesheet)
 │
 ├── /js
-│   └── validation.js (Member 3 - client-side validation)
+│   └── validation.js (Hianyu - client-side validation)
 │
 ├── /includes
 │   ├── db.php (database connection & queries)
 │   ├── auth.php (authentication & validation functions)
-│   ├── header.php (navigation header - Member 1)
-│   └── footer.php (page footer - Member 1)
+│   ├── header.php (navigation header - Mike)
+│   └── footer.php (page footer - Mike)
 │
 ├── /database
 │   └── skill_exchange.sql (database schema & initialization)
@@ -207,40 +207,40 @@ assign/
     └── PROJECT_REPORT.md (this file - project overview)
 ```
 
-### Core Files (Member 2 & Member 3)
+### Core Files (Newton & Hianyu)
 
 #### Authentication & Database Files
 
 | File | Purpose | Created By |
 |------|---------|-----------|
-| `includes/db.php` | Database connection, helper functions for CRUD | Member 3 |
-| `includes/auth.php` | Login, registration, validation functions | Member 2 |
+| `includes/db.php` | Database connection, helper functions for CRUD | Hianyu |
+| `includes/auth.php` | Login, registration, validation functions | Newton |
 
 #### User-Facing Pages
 
 | File | Purpose | Created By | CRUD Operation |
 |------|---------|-----------|---|
-| `login.php` | User authentication | Member 2 | Read (users) |
-| `register.php` | New user creation | Member 2 | Create (users) |
-| `logout.php` | Session termination | Member 2 | Delete (session) |
-| `search.php` | AJAX search endpoint | Member 3 | Read (search) |
-| `dashboard.php` | Main interface, skill display, search | Member 2 & 3 | Read (all) |
-| `add_skill.php` | Create new skill | Member 2 | Create (skills) |
-| `edit_skill.php` | Modify skill details | Member 2 | Update (skills) |
-| `delete_skill.php` | Remove skill | Member 2 | Delete (skills) |
-| `request.php` | Request skill exchange | Member 2 & 3 | Create (requests) |
+| `login.php` | User authentication | Newton | Read (users) |
+| `register.php` | New user creation | Newton | Create (users) |
+| `logout.php` | Session termination | Newton | Delete (session) |
+| `search.php` | AJAX search endpoint | Hianyu | Read (search) |
+| `dashboard.php` | Main interface, skill display, search | Newton & Hianyu | Read (all) |
+| `add_skill.php` | Create new skill | Newton | Create (skills) |
+| `edit_skill.php` | Modify skill details | Newton | Update (skills) |
+| `delete_skill.php` | Remove skill | Newton | Delete (skills) |
+| `request.php` | Request skill exchange | Newton & Hianyu | Create (requests) |
 
 #### Database File
 
 | File | Purpose | Created By |
 |------|---------|-----------|
-| `database/skill_exchange.sql` | Database schema initialization | Member 3 |
+| `database/skill_exchange.sql` | Database schema initialization | Hianyu |
 
 ---
 
 ### Detailed File Documentation
 
-#### `login.php` (Member 2)
+#### `login.php` (Newton)
 **What it does**: 
 - Provides login form for existing users
 - Validates credentials against database
@@ -257,7 +257,7 @@ assign/
 
 ---
 
-#### `register.php` (Member 2)
+#### `register.php` (Newton)
 **What it does**:
 - Form for new user registration
 - Validates input and checks for duplicates
@@ -274,7 +274,7 @@ assign/
 
 ---
 
-#### `dashboard.php` (Member 2 & 3)
+#### `dashboard.php` (Newton & Hianyu)
 **What it does**:
 - Main user interface after login
 - Displays user's own skills
@@ -290,14 +290,14 @@ assign/
 
 **Lines of Code**: ~290
 
-**Search Implementation** (Member 3):
+**Search Implementation** (Hianyu):
 - Uses FULLTEXT search on skill title
 - Joins with users table for username display
 - Limits results by relevance
 
 ---
 
-#### `add_skill.php` (Member 2 & 3)
+#### `add_skill.php` (Newton & Hianyu)
 **What it does**:
 - Form to create new skill
 - Validates input on server-side
@@ -308,7 +308,7 @@ assign/
 - Title, category, description, level inputs
 - Optional keywords field
 - Dropdown for predefined categories
-- Server-side validation (Member 3)
+- Server-side validation (Hianyu)
 - Form reset on successful submission
 
 **Validation Rules**:
@@ -319,7 +319,7 @@ assign/
 
 ---
 
-#### `edit_skill.php` (Member 2 & 3)
+#### `edit_skill.php` (Newton & Hianyu)
 **What it does**:
 - Pre-fills form with current skill data
 - Allows modification of skill details
@@ -334,7 +334,7 @@ assign/
 
 ---
 
-#### `delete_skill.php` (Member 2)
+#### `delete_skill.php` (Newton)
 **What it does**:
 - Verifies ownership of skill
 - Deletes skill from database
@@ -348,7 +348,7 @@ assign/
 
 ---
 
-#### `request.php` (Member 2 & 3)
+#### `request.php` (Newton & Hianyu)
 **What it does**:
 - Displays skill being requested (read-only)
 - Form to specify offered skill
@@ -369,7 +369,7 @@ assign/
 
 ---
 
-#### `logout.php` (Member 2)
+#### `logout.php` (Newton)
 **What it does**:
 - Destroys PHP session
 - Clears all session variables
@@ -382,7 +382,7 @@ assign/
 
 ---
 
-#### `includes/db.php` (Member 3)
+#### `includes/db.php` (Hianyu)
 **What it does**:
 - Establishes MySQL connection
 - Provides database helper functions
@@ -402,7 +402,7 @@ assign/
 
 ---
 
-#### `includes/auth.php` (Member 2)
+#### `includes/auth.php` (Newton)
 **What it does**:
 - Handles user registration process
 - Manages user login
@@ -423,7 +423,7 @@ assign/
 
 ---
 
-#### `database/skill_exchange.sql` (Member 3)
+#### `database/skill_exchange.sql` (Hianyu)
 **What it does**:
 - Creates database
 - Defines three tables: users, skills, requests

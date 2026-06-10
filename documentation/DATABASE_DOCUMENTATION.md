@@ -1,7 +1,7 @@
 # Database Documentation - Skill Exchange
 
 ## Member Contributions
-- **Member 3**: Designed and created the `skill_exchange` database schema, tables, indexes, and sample data.
+- **Hianyu**: Designed and created the `skill_exchange` database schema, tables, indexes, and sample data.
 
 ## Database Name: `skill_exchange`
 

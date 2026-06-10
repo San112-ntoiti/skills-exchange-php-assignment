@@ -7,9 +7,9 @@
 ---
 
 ## Member Contributions
-- **Member 1**: Frontend pages and user interface components.
-- **Member 2**: Backend authentication, session management, skill CRUD, request handling.
-- **Member 3**: Database integration, search endpoint, JavaScript validation and AJAX.
+- **Mike**: Frontend pages and user interface components.
+- **Newton**: Backend authentication, session management, skill CRUD, request handling.
+- **Hianyu**: Database integration, search endpoint, JavaScript validation and AJAX.
 
 ---
 
@@ -136,7 +136,7 @@ Tracks skill exchange requests between users.
 
 #### `/includes/db.php`
 **Purpose**: Database connection and helper functions  
-**Responsibility**: Member 3 (Database Setup)
+**Responsibility**: Hianyu (Database Setup)
 
 **Functions**:
 - `sanitize_input($data, $conn)` - Prevents SQL injection by escaping inputs
@@ -152,7 +152,7 @@ Tracks skill exchange requests between users.
 
 #### `/includes/auth.php`
 **Purpose**: Authentication and validation functions  
-**Responsibility**: Member 2 (Login System & Sessions)
+**Responsibility**: Newton (Login System & Sessions)
 
 **Functions**:
 - `register_user($username, $email, $password, $conn)` - Creates new user account
@@ -170,7 +170,7 @@ Tracks skill exchange requests between users.
 
 #### `login.php`
 **Purpose**: User login interface  
-**Responsibility**: Member 2  
+**Responsibility**: Newton  
 
 **Features**:
 - Email and password form fields
@@ -184,7 +184,7 @@ Tracks skill exchange requests between users.
 
 #### `register.php`
 **Purpose**: User registration interface  
-**Responsibility**: Member 2
+**Responsibility**: Newton
 
 **Features**:
 - Username, email, and password input fields
@@ -200,7 +200,7 @@ Tracks skill exchange requests between users.
 
 #### `dashboard.php`
 **Purpose**: Main user interface and hub  
-**Responsibility**: Member 2 (Display) & Member 3 (Search)
+**Responsibility**: Newton (Display) & Hianyu (Search)
 
 **Features**:
 - Navigation bar with logout
@@ -216,7 +216,7 @@ Tracks skill exchange requests between users.
 
 #### `add_skill.php`
 **Purpose**: Form to create new skills  
-**Responsibility**: Member 2 (CRUD Create) & Member 3 (Validation)
+**Responsibility**: Newton (CRUD Create) & Hianyu (Validation)
 
 **Features**:
 - Skill title input (min 3 chars)
@@ -233,7 +233,7 @@ Tracks skill exchange requests between users.
 
 #### `edit_skill.php`
 **Purpose**: Form to modify existing skills  
-**Responsibility**: Member 2 (CRUD Update) & Member 3 (Validation)
+**Responsibility**: Newton (CRUD Update) & Hianyu (Validation)
 
 **Features**:
 - Pre-populated form with current skill data
@@ -247,7 +247,7 @@ Tracks skill exchange requests between users.
 
 #### `delete_skill.php`
 **Purpose**: Deletes user's skill from database  
-**Responsibility**: Member 2 (CRUD Delete)
+**Responsibility**: Newton (CRUD Delete)
 
 **Features**:
 - Verifies user ownership before deletion
@@ -259,7 +259,7 @@ Tracks skill exchange requests between users.
 
 #### `request.php`
 **Purpose**: Interface to request skill exchange  
-**Responsibility**: Member 2 (CRUD Create) & Member 3 (Validation)
+**Responsibility**: Newton (CRUD Create) & Hianyu (Validation)
 
 **Features**:
 - Displays skill information (read-only)
@@ -275,7 +275,7 @@ Tracks skill exchange requests between users.
 
 #### `logout.php`
 **Purpose**: Ends user session  
-**Responsibility**: Member 2 (Session Management)
+**Responsibility**: Newton (Session Management)
 
 **Features**:
 - Destroys PHP session
@@ -289,7 +289,7 @@ Tracks skill exchange requests between users.
 
 #### `/database/skill_exchange.sql`
 **Purpose**: Database schema and initial setup  
-**Responsibility**: Member 3 (Database Setup)
+**Responsibility**: Hianyu (Database Setup)
 
 **Contents**:
 - CREATE DATABASE statement
@@ -471,7 +471,7 @@ Then open: `http://localhost:8000`
 
 ## Member Responsibilities Summary
 
-### Member 2 - Backend/PHP
+### Newton - Backend/PHP
 ✅ **Completed**:
 - Login system with session management
 - User registration with validation
@@ -491,7 +491,7 @@ Then open: `http://localhost:8000`
 - `logout.php`
 - `includes/auth.php`
 
-### Member 3 - Database & JavaScript
+### Hianyu - Database & JavaScript
 ✅ **Completed**:
 - Database schema design with 3 tables
 - Proper indexing for performance

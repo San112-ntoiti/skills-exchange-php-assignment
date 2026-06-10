@@ -122,9 +122,9 @@ assign/
 │   ├── PROJECT_REPORT.md (full project overview)
 │   └── QUICK_START_GUIDE.md (this file)
 └── Other Components
-    ├── /css/style.css (Member 1)
-    ├── /js/validation.js (Member 3)
-    └── index.php (Member 1)
+    ├── /css/style.css (Mike)
+    ├── /js/validation.js (Hianyu)
+    └── index.php (Mike)
 ```
 
 ---
@@ -143,9 +143,9 @@ assign/
 
 ## Member Contributions
 
-- **Member 1**: Frontend/UI design, homepage, navigation, Bootstrap styling, shared header/footer.
-- **Member 2**: Backend logic, user authentication, session management, skill CRUD operations, request workflows.
-- **Member 3**: Database schema design, SQL import data, AJAX search endpoint, client-side validation, JavaScript support.
+- **Mike**: Frontend/UI design, homepage, navigation, Bootstrap styling, shared header/footer.
+- **Newton**: Backend logic, user authentication, session management, skill CRUD operations, request workflows.
+- **Hianyu**: Database schema design, SQL import data, AJAX search endpoint, client-side validation, JavaScript support.
 
 ---
 
